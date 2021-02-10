@@ -1,13 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SWMerchDataRepository.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             :base(options)
         {
 
