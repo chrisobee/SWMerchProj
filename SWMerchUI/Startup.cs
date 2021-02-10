@@ -36,7 +36,7 @@ namespace SWMerchUI
             services.AddSingleton<WeatherForecastService>();
             services.AddDbContext<ApplicationDbContext>(opts =>
                 opts.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+            services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
         }
