@@ -1,23 +1,42 @@
 ﻿@page "/counter"
-@using SWMerchDataRepository
 @using SWMerchDataRepository.Models
 @using SWMerchDataRepository.Contracts
-@using SWMerchDataRepository.Data
 
 @inject IRepositoryWrapper _repo 
 
-<h1>Counter</h1>
 
-<p>Current count: @currentCount</p>
+    <h1>Counter</h1>
 
-<button class="btn btn-primary" @onclick="IncrementCount" >Click me</button>
+    <p>Current count: @currentCount</p>
+
+    <h3>Product Name: @productName</h3>
+    <p>Product Price: @productPrice</p>
+
+    <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
 
 @code {
     private int currentCount = 0;
+    private string productName = "";
+    private double productPrice = 0;
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    protected override void OnInitialized()
+    {
+        Product product = _repo.Product.GetProductById(1);
+        productName = product.ProductName;
+        productPrice = product.Price;
+    }
+
+    private void setNameAndPrice()
+    {
+        Product product = _repo.Product.GetProductById(1);
+        productName = product.ProductName;
+        productPrice = product.Price;
     }
 
     private void AddProduct()
@@ -31,5 +50,5 @@
 
         _repo.Product.Create(newProduct);
         _repo.Save();
-}
+    }
 }
