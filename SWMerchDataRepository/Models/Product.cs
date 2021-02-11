@@ -10,6 +10,7 @@ namespace SWMerchDataRepository.Models
         [Key]
         public int ProductId { get; set; }
         public string ProductName { get; set; }
+        public double Price { get; set; }
         public string ImgUrl { get; set; }
         public string ShortDesc { get; set; }
         public string LongDesc { get; set; }
