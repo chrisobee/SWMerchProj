@@ -1,9 +1,25 @@
 ﻿@page "/Admin/AddProduct"
+@using SWMerchDataRepository.Models
+@using SWMerchDataRepository.Contracts
+
+@inject IRepositoryWrapper _repo
 
 <h3>Add a New Product</h3>
 
+<EditForm Model="@newPerson" OnValidSubmit="@InsertPerson">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
+    <InputText id="firstName" @bind-Value="newPerson.FirstName" />
+    <InputText id="lastName" @bind-Value="newPerson.LastName" />
+    <InputText id="email" @bind-Value="newPerson.Email" />
+
+    <button type="submit" class="btn btn-danger">Submit</button>
+</EditForm>
 
 @code {
-
+    private async Task InsertProduct()
+    {
+        Product
+    }
 }
