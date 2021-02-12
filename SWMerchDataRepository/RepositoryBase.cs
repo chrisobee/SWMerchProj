@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SWMerchDataRepository
 {
@@ -26,14 +27,14 @@ namespace SWMerchDataRepository
             ApplicationDbContext.Set<T>().Remove(entity);
         }
 
-        public IQueryable<T> FindAll()
+        public async Task<IQueryable<T>> FindAll()
         {
-            return ApplicationDbContext.Set<T>().AsNoTracking();
+            return ApplicationDbContext.Set<T>();
         }
 
-        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
+        public async Task<IQueryable<T>> FindByCondition(Expression<Func<T, bool>> expression)
         {
-            return ApplicationDbContext.Set<T>().Where(expression).AsNoTracking();
+            return ApplicationDbContext.Set<T>().Where(expression);
         }
 
         public void Update(T entity)

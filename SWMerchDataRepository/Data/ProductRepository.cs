@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SWMerchDataRepository.Data
 {
@@ -14,11 +15,19 @@ namespace SWMerchDataRepository.Data
         {
         }
 
-        public Product GetProductById(int productId) =>
-            FindByCondition(p => p.ProductId == productId).SingleOrDefault();
-        public List<Product> GetAllProducts() =>
-            FindAll().ToList();
+        public async Task<Product> GetProductById(int productId)
+        {
+            var queryResult = await FindByCondition(p => p.ProductId == productId);
+            return queryResult.SingleOrDefault();
 
+        }
 
+        public async Task<List<Product>> GetAllProducts()
+        {
+            var queryResult = await FindAll();
+            return queryResult.ToList();
+        }
+
+        public void InsertProduct(Product product) => Create(product);
     }
 }
