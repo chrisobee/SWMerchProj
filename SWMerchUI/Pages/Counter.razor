@@ -25,16 +25,16 @@
         currentCount++;
     }
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
-        Product product = _repo.Product.GetProductById(1);
+        Product product = await _repo.Product.GetProductById(1);
         productName = product.ProductName;
         productPrice = product.Price;
     }
 
-    private void setNameAndPrice()
+    private async Task setNameAndPrice()
     {
-        Product product = _repo.Product.GetProductById(1);
+        Product product = await _repo.Product.GetProductById(1);
         productName = product.ProductName;
         productPrice = product.Price;
     }

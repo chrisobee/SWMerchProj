@@ -11,18 +11,77 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <InputText id="productName" @bind-Value="product.ProductName" />
-    <InputNumber id="price" @bind-Value="product.Price" />
-    <InputText id="imgUrl" @bind-Value="product.ImgUrl" />
-    <InputText id="shortDesc" @bind-Value="product.ShortDesc" />
-    <InputText id="longDesc" @bind-Value="product.LongDesc" />
-    <InputNumber id="moralityPoints" @bind-Value="product.MoralityPoints" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <label>Name</label>
+                <InputText id="productName" @bind-Value="product.ProductName" />
+            </div>
+            <div class="col-md-6">
+                <label>Price</label>
+                <InputNumber id="price" @bind-Value="product.Price" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Image Url</label>
+                <InputText id="imgUrl" @bind-Value="product.ImgUrl" />
+            </div>
+            <div class="col-md-6">
+                <label>Short Description</label>
+                <InputText id="shortDesc" @bind-Value="product.ShortDesc" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Long Description</label>
+                <InputText id="longDesc" @bind-Value="product.LongDesc" />
+            </div>
+            <div class="col-md-6">
+                <label>Morality Points</label>
+                <InputNumber id="moralityPoints" @bind-Value="product.MoralityPoints" />
+            </div>
+        </div>
+    </div>
 
     <button type="submit" class="btn btn-info">Submit</button>
 </EditForm>
 
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in products)
+        {
+            <tr>
+                <td>@product.ProductName</td>
+                <td>@product.Price</td>
+                @if(!String.IsNullOrEmpty(product.ImgUrl))
+                {
+                    <td><img src="@product.ImgUrl" /></td>
+                }
+                else
+                {
+                    <td>No Image To Display</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
 @code {
+    private List<Product> products;
     private DisplayProduct product = new DisplayProduct();
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await _repo.Product.GetAllProducts();
+    }
 
     private void InsertProduct()
     {
