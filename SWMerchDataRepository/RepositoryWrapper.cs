@@ -14,6 +14,8 @@ namespace SWMerchDataRepository
         private IProductRepository _product;
         private IPurchasedProductRepository _purchasedProduct;
         private IAdvancedUserSettingsRepository _advancedUserSettings;
+        private ITagRepository _tag;
+        private IProductTagRepository _productTag;
 
         public ICustomerRepository Customer
         {
@@ -72,6 +74,30 @@ namespace SWMerchDataRepository
                     _advancedUserSettings = new AdvancedUserSettingsRepository(_context);
                 }
                 return _advancedUserSettings;
+            }
+        }
+
+        public ITagRepository Tag
+        {
+            get
+            {
+                if(_tag == null)
+                {
+                    _tag = new TagRepository(_context);
+                }
+                return _tag;
+            }
+        }
+
+        public IProductTagRepository ProductTag
+        {
+            get
+            {
+                if(_productTag == null)
+                {
+                    _productTag = new ProductTagRepository(_context);
+                }
+                return _productTag;
             }
         }
 

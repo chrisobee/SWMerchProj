@@ -19,7 +19,6 @@ namespace SWMerchDataRepository.Data
         {
             var queryResult = await FindByCondition(p => p.ProductId == productId);
             return queryResult.SingleOrDefault();
-
         }
 
         public async Task<List<Product>> GetAllProducts()

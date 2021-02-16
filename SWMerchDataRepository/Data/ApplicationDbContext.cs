@@ -19,5 +19,7 @@ namespace SWMerchDataRepository.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<PurchasedProduct> PurchasedProducts { get; set; }
         public DbSet<AdvancedUserSettings> UserSettings { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<ProductTag> ProductTags { get; set; }
     }
 }

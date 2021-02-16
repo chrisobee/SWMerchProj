@@ -11,7 +11,8 @@ namespace SWMerchDataRepository.Contracts
         IProductRepository Product { get; }
         IPurchasedProductRepository PurchasedProduct { get; }
         IAdvancedUserSettingsRepository AdvancedUserSettings { get; }
-
+        ITagRepository Tag { get; }
+        IProductTagRepository ProductTag { get; }
         void Save();
     }
 }
