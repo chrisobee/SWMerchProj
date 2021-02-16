@@ -9,7 +9,7 @@ namespace SWMerchUI.DisplayModels
     public class DisplayProduct
     {
         [Required]
-        [StringLength(15, ErrorMessage = "Name of Product is too long!")]
+        [StringLength(50, ErrorMessage = "Name of Product is too long!")]
         [MinLength(1, ErrorMessage = "Name of Product is too short!")]
         public string ProductName { get; set; }
 
