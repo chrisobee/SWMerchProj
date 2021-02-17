@@ -8,6 +8,17 @@ a, .btn-link {
     color: #0366d6;
 }
 
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 3px;
+    background-color: blue;
+    border-radius: 50%;
+    display: inline-block
+}
+
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
