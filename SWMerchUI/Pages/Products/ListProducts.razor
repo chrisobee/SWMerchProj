@@ -1,8 +1,14 @@
 ﻿@page "/Products/AllProducts"
+@inject IRepositoryWrapper _repo
 <h3>List Products</h3>
 
-<HorizontalProductCard></HorizontalProductCard>
+<HorizontalProductCard Product="@product"></HorizontalProductCard>
 
 @code {
+    private Product product;
 
+    protected override async Task OnInitializedAsync()
+    {
+        product = await _repo.Product.GetProductById(1);
+    }
 }
