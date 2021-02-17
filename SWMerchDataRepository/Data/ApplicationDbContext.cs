@@ -22,5 +22,6 @@ namespace SWMerchDataRepository.Data
         public DbSet<Tag> Tags { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<Cart> Carts { get; set; }
+        public DbSet<ProductInCart> ProductsInCarts { get; set; }
     }
 }

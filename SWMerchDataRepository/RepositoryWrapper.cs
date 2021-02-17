@@ -17,6 +17,7 @@ namespace SWMerchDataRepository
         private ITagRepository _tag;
         private IProductTagRepository _productTag;
         private ICartRepository _cart;
+        private IProductInCartRepository _productInCart;
 
         public ICustomerRepository Customer
         {
@@ -110,6 +111,17 @@ namespace SWMerchDataRepository
                     _cart = new CartRepository(_context);
                 }
                 return _cart;
+            }
+        }
+        public IProductInCartRepository ProductInCart
+        {
+            get
+            {
+                if(_productInCart == null)
+                {
+                    _productInCart = new ProductInCartRepository(_context);
+                }
+                return _productInCart;
             }
         }
 

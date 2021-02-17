@@ -14,6 +14,7 @@ namespace SWMerchDataRepository.Contracts
         ITagRepository Tag { get; }
         IProductTagRepository ProductTag { get; }
         ICartRepository Cart { get; }
+        IProductInCartRepository ProductInCart { get; }
         void Save();
     }
 }
