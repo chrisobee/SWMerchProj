@@ -23,5 +23,9 @@ namespace SWMerchDataRepository.Models
         [ForeignKey("UserSettings")]
         public int UserSettingsId { get; set; }
         public AdvancedUserSettings UserSettings { get; set; }
+
+        [ForeignKey("Cart")]
+        public int CartId { get; set; }
+        public Cart Cart { get; set; }
     }
 }

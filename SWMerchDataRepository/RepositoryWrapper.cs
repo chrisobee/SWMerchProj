@@ -14,6 +14,11 @@ namespace SWMerchDataRepository
         private IProductRepository _product;
         private IPurchasedProductRepository _purchasedProduct;
         private IAdvancedUserSettingsRepository _advancedUserSettings;
+        private ITagRepository _tag;
+        private IProductTagRepository _productTag;
+        private ICartRepository _cart;
+        private IProductInCartRepository _productInCart;
+        private ICardRepository _card;
 
         public ICustomerRepository Customer
         {
@@ -72,6 +77,63 @@ namespace SWMerchDataRepository
                     _advancedUserSettings = new AdvancedUserSettingsRepository(_context);
                 }
                 return _advancedUserSettings;
+            }
+        }
+
+        public ITagRepository Tag
+        {
+            get
+            {
+                if(_tag == null)
+                {
+                    _tag = new TagRepository(_context);
+                }
+                return _tag;
+            }
+        }
+
+        public IProductTagRepository ProductTag
+        {
+            get
+            {
+                if(_productTag == null)
+                {
+                    _productTag = new ProductTagRepository(_context);
+                }
+                return _productTag;
+            }
+        }
+        public ICartRepository Cart
+        {
+            get
+            {
+                if(_cart == null)
+                {
+                    _cart = new CartRepository(_context);
+                }
+                return _cart;
+            }
+        }
+        public IProductInCartRepository ProductInCart
+        {
+            get
+            {
+                if(_productInCart == null)
+                {
+                    _productInCart = new ProductInCartRepository(_context);
+                }
+                return _productInCart;
+            }
+        }
+        public ICardRepository Card
+        {
+            get
+            {
+                if(_card == null)
+                {
+                    _card = new CardRepository(_context);
+                }
+                return _card;
             }
         }
 

@@ -12,7 +12,6 @@ using Microsoft.Extensions.Hosting;
 using SWMerchDataRepository;
 using SWMerchDataRepository.Contracts;
 using SWMerchDataRepository.Data;
-using SWMerchUI.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +34,6 @@ namespace SWMerchUI
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddDbContext<ApplicationDbContext>(opts =>
                 opts.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
             services.AddDefaultIdentity<IdentityUser>()

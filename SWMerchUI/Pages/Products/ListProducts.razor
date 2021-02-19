@@ -1,6 +1,17 @@
 ﻿@page "/Products/AllProducts"
-<h3>ListProducts</h3>
+@inject IRepositoryWrapper _repo
+<h3>List Products</h3>
+
+@foreach (var product in products)
+{
+    <HorizontalProductCard Product="@product"></HorizontalProductCard>
+}
 
 @code {
+    private List<Product> products;
 
+    protected override async Task OnInitializedAsync()
+    {
+        products = await _repo.Product.GetAllProducts();
+    }
 }
