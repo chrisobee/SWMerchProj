@@ -6,7 +6,7 @@
                 <div class="col-md-6 mt-1">
                     <h5>@Product.ProductName</h5>
                     <div class="d-flex flex-row">
-                        <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>
+                        <div class="ratings mr-2"><i id="str-1" class="fa fa-star @filled" @onmouseover="setFilled" @onmouseout="removeFilled"></i><i class="fa fa-star @filled" @onmouseover="setFilled" @onmouseout="removeFilled"></i><i class="fa fa-star @filled" @onmouseover="setFilled" @onmouseout="removeFilled"></i><i class="fa fa-star @filled" @onmouseover="setFilled" @onmouseout="removeFilled"></i></div><span>310</span>
                     </div>
                     <p class="text-justify para mb-0">@Product.ShortDesc<br><br></p>
                 </div>
@@ -25,4 +25,15 @@
 @code {
     [Parameter]
     public Product Product { get; set; }
+    private string filled = null;
+
+    private void setFilled()
+    {
+        filled = "filled";
+    }
+    private void removeFilled()
+    {
+        filled = null;
+    }
+
 }

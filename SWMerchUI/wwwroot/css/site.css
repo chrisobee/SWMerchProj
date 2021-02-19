@@ -20,7 +20,11 @@ a, .btn-link {
 }
 .ratings i {
     font-size: 16px;
-    color: red
+    color: black;
+}
+
+.filled {
+    color: red !important;
 }
 
 .strike-text {
