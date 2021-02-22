@@ -8,8 +8,6 @@ namespace SWMerchDataRepository.Contracts
 {
     public interface ICartRepository: IRepositoryBase<Cart>
     {
-        public Task AddProductToCart(int cartId, int productId);
-        public Task SetQuantity(int cartId, int productId, int qty);
-        public Task RemoveProductFromCart(int cartId, int productId);
+        public Task<Cart> GetCartById(int cartId);
     }
 }
