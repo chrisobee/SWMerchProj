@@ -1,0 +1,25 @@
+﻿@page "/products"
+
+@inject IRepositoryWrapper _repo
+
+<h3>ProductsComponent</h3>
+
+<ul>
+    @foreach (var prod in products)
+    {
+        <LayoutView>
+
+        </LayoutView>
+        <li> @prod.ProductName</li>
+    }
+</ul>
+
+@code {
+
+    private List<Product> products = new List<Product>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await _repo.Product.GetAllProducts();
+    }
+}
