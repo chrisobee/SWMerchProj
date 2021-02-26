@@ -16,6 +16,7 @@ namespace SWMerchDataRepository.Contracts
         ICartRepository Cart { get; }
         IProductInCartRepository ProductInCart { get; }
         ICardRepository Card { get; }
+        IAddressRepository Address { get; }
         void Save();
     }
 }

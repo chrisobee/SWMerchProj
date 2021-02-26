@@ -19,6 +19,7 @@ namespace SWMerchDataRepository
         private ICartRepository _cart;
         private IProductInCartRepository _productInCart;
         private ICardRepository _card;
+        private IAddressRepository _address;
 
         public ICustomerRepository Customer
         {
@@ -134,6 +135,17 @@ namespace SWMerchDataRepository
                     _card = new CardRepository(_context);
                 }
                 return _card;
+            }
+        }
+        public IAddressRepository Address
+        {
+            get
+            {
+                if (_address == null)
+                {
+                    _address = new AddressRepository(_context);
+                }
+                return _address;
             }
         }
 
