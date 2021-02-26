@@ -1,0 +1,84 @@
+﻿@page "/Card/AddCard"
+
+
+@inject IRepositoryWrapper _repo
+
+<h2>Hello @customer.FirstName</h2>
+<h3>Add a new credit or debit card</h3>
+
+<EditForm Model="@card" OnValidSubmit="@InsertCard">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <label>Name</label>
+                <InputText id="name" @bind-Value="card.CardHolderName" />
+            </div>
+            <div class="col-md-6">
+                <label>Card Number</label>
+                <InputText id="cardNumber" @bind-Value="card.CardNumber" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Month</label>
+                <InputNumber id="cardMonth" @bind-Value="card.CardExpiryMonth" />
+            </div>
+            <div class="col-md-6">
+                <label>Year</label>
+                <InputNumber id="cardYear" @bind-Value="card.CardExpiryYear" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Back 3</label>
+                <InputText id="cardCvc" @bind-Value="card.CardCvc" />
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+
+@code {
+    private List<Card> cards;
+    private DisplayCard card = new DisplayCard();
+    private Customer customer = new Customer();
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await authStateTask;
+        var user = authState.User;
+        customer.FirstName = user.Identity.Name;
+        //cards = await _repo.Card.GetAllCards();
+
+    }
+
+    private void InsertCard()
+    {
+        Card cardToAdd = new Card
+        {
+            CardHolderName = card.CardHolderName,
+            CardNumber = card.CardNumber,
+            CardExpiryMonth = card.CardExpiryMonth,
+            CardExpiryYear = card.CardExpiryYear,
+            CardCvc = card.CardCvc,
+        };
+
+        _repo.Card.InsertCard(cardToAdd);
+        _repo.Save();
+
+        // Return to last page
+    }
+}
+
