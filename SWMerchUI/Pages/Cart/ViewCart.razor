@@ -1,5 +1,8 @@
-﻿<h3>ViewCart</h3>
+﻿@page "/Cart/{customerId:int}" 
+<h3>ViewCart</h3>
 
 @code {
+    [Parameter]
+    public int CustomerId { get; set; }
 
 }
