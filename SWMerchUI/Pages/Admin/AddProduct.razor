@@ -1,4 +1,5 @@
 ﻿@page "/Admin/AddProduct"
+ 
 
 @inject IRepositoryWrapper _repo
 
@@ -81,9 +82,13 @@
     private List<Product> products;
     private DisplayProduct product = new DisplayProduct();
 
+    [CascadingParameter]
+    private Task<AuthenticationState> authStateTask { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         products = await _repo.Product.GetAllProducts();
+
     }
 
     private void InsertProduct()
